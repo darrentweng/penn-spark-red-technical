@@ -5,7 +5,9 @@ This is the React frontend for the SkillSwap application, a peer-to-peer microle
 ## Features
 
 - **User Authentication**: Registration, login, and logout
-- **Skills Management**: Browse, search, and create skills
+- **Skills Management**: Browse, search, create, edit, and delete skills
+- **Ownership Control**: Users can only edit/delete their own skills
+- **Tabbed Interface**: Separate views for "All Skills" and "My Skills"
 - **Responsive Design**: Mobile-friendly interface
 - **Modern UI**: Built with Tailwind CSS and Heroicons
 - **Real-time Search**: Search skills by title, description, or tags
@@ -57,14 +59,15 @@ This is the React frontend for the SkillSwap application, a peer-to-peer microle
 src/
 ├── components/          # Reusable UI components
 │   ├── Navbar.jsx      # Navigation bar
-│   └── LoadingSpinner.jsx
+│   ├── LoadingSpinner.jsx
+│   └── EditSkillModal.jsx # Modal for editing skills
 ├── contexts/           # React contexts
 │   └── AuthContext.jsx # Authentication state
 ├── pages/              # Page components
 │   ├── Home.jsx        # Landing page
 │   ├── Login.jsx       # User login
 │   ├── Register.jsx    # User registration
-│   ├── Skills.jsx      # Skills listing
+│   ├── Skills.jsx      # Skills listing with edit/delete
 │   └── AddSkill.jsx    # Create new skill
 ├── services/           # API services
 │   └── api.js         # HTTP client and API calls
@@ -87,9 +90,19 @@ The frontend communicates with the backend through the `/api` proxy configured i
 ### Skills Management
 
 - **Browse Skills**: View all available skills with search and filtering
+- **My Skills**: View and manage skills you own
 - **Create Skill**: Add new skills with title, description, difficulty, and tags
+- **Edit Skill**: Modify existing skills (owners only)
+- **Delete Skill**: Remove skills (owners only)
 - **Search**: Find skills by title, description, or tags
 - **Filter**: Filter by difficulty level (beginner, intermediate, advanced)
+
+### Ownership & Permissions
+
+- **View**: All authenticated users can view all skills
+- **Edit**: Only skill owners can edit their skills
+- **Delete**: Only skill owners can delete their skills
+- **Create**: All authenticated users can create new skills
 
 ## Styling
 
@@ -138,10 +151,12 @@ No environment variables are needed for the frontend as it uses the proxy config
 
 ## Next Steps
 
-This completes Phase 2 of the SkillSwap application. Future enhancements could include:
+Future enhancements could include:
 
 - **Skill Details**: Individual skill pages with more information
 - **User Profiles**: Detailed user profiles and skill history
 - **Messaging**: Communication between learners and teachers
 - **Progress Tracking**: Learning progress and achievements
 - **Notifications**: Real-time updates and alerts
+- **Skill Categories**: Better organization and classification
+- **Rating System**: Skill quality and difficulty ratings
